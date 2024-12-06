@@ -1,0 +1,16 @@
+16)
+    Docker est une plateforme logicielle quie permet de créer, déployer et executer des conteneurs.
+    Il est conçu pour simplifier le déploiement et la mise en production d'application.
+
+ 17)
+
+
+18)
+    Ce cours m'a permis de mieux comprendre et utiliser Docker. Je ne l'utilisais que très peu mais je pense l'utiliser plus tard désormais.
+    Le cours est très bien structuré et ne pas pas paru trop difficile ni trop ennuyant. Juste ce qu'il faut.
+
+19)
+    Bouh !
+
+20)
+    (Push github)

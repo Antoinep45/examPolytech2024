@@ -1,0 +1,46 @@
+networks:
+  myNetwork:
+
+volumes:
+  database:
+
+services:
+  db:
+    image: mysql:8
+    container_name: mysql
+    environment:
+      MYSQL_DATABASE: myDatabase
+      MYSQL_ROOT_PASSWORD: databaseRootPassword
+      MYSQL_USER: databaseUser
+      MYSQL_PASSWORD: databasePassword
+    networks:
+      - myNetwork
+    volumes:
+      - database:/var/lib/mysql/data:rw
+  java:
+    image: java
+    depends_on:
+      - db
+    build:
+      context: java
+      dockerfile: Dockerfile
+    container_name: java
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/myDatabase
+      SPRING_DATASOURCE_USERNAME: databaseUser
+      SPRING_DATASOURCE_PASSWORD: databasePassword
+    ports:
+      - 8448:8448
+    networks:
+      - myNetwork
+  angular:
+    image: angular
+    build:
+      context: angular
+      dockerfile: Dockerfile
+    container_name: angular
+    environment:
+      BACKEND_URL: http://localhost:8448
+    ports:
+      - 8888:80
+
